@@ -1,0 +1,122 @@
+/* code from https://davidwalsh.name/php-calendar */
+/* calendar code is based off of the given link but a lot of changes were made to display a calendar that was suitable for our project
+ - font and color changes
+ - changing width/height of day boxes
+ - changing margins and padding
+ - rounding edges
+ */
+
+/*own code */
+
+body {
+    background-image: url("bg6b.jpg");
+    position:static;
+}
+.month {
+    margin-left: 30px;
+    font-family:Didot;
+    font-weight: bold;
+    font-size:45px;
+    text-align:center;
+}
+
+table.calendar {
+    margin-left: 25px;
+    border:7px solid #031128;
+    border-radius: 3px 3px 3px 3px;
+    
+}
+tr.calendar-row {
+    
+}
+td.calendar-day {
+    min-height:200px;
+    font-size:14px;
+    position:relative;
+    
+}
+* html div.calendar-day {
+    height:200px;
+    border:1px solid #031128;
+    
+}
+
+td.calendar-day:hover {
+    background: rgba(159, 198, 196,0.4);
+    -webkit-transition:0.5s;
+    
+}
+td.calendar-day-np {
+    background:#d7ede9
+    min-height:200px;
+    
+}
+* html div.calendar-day-np {
+    height:200px;
+    
+}
+td.calendar-day-head {
+    background:#1a2828;
+    color: white;
+    font-family:Lucida Sans Unicode;
+    text-align:center;
+    width:90px;
+    padding:5px;
+    border-bottom:2px solid black;
+    border-top:2px solid black;
+    border-right:2px solid black;
+    
+}
+
+#current-num {
+    background:#52aaa3;
+    color:white;
+    font-weight:bold;
+}
+
+div.day-number {
+    position:;
+    background:#c7e1e5;
+    border-radius: 5px;
+    padding:5px 5px 5px 5px;
+    color:black;
+    float:left;
+    margin:-40px 0px 0 -1px;
+    width: 25px;
+    text-align:center;
+    
+}
+/* shared */
+td.calendar-day, td.calendar-day-np {
+    width:105px;
+    height: 100px;
+    padding:5px;
+    border:2px solid black;
+    
+}
+
+/* own code from here on */
+.todo {
+    margin-top: 60px;
+    font-family:Lucida Sans Unicode;
+}
+#task {
+    maxlength: 5;
+}
+
+#todoTable {
+    margin-top: 10px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 5px 5px 5px 5px;
+    width: 380px;
+}
+th, td {
+    font-size: 15px;
+    width: 100px;
+    padding: 15px;
+}
+
+th {
+    
+    text-decoration: underline;
+}
