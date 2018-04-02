@@ -1,5 +1,4 @@
 <!-- calendar starter code from https://davidwalsh.name/php-calendar -->
-<!-- test for github -->
 <DOCTYPE HTML>
     <html>
     <head>
@@ -15,7 +14,7 @@
 
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://unpkg.com/popper.js"></script>
+        
 
 
         <title> Time Savvy </title>
@@ -24,7 +23,35 @@
 
     <body style="margin:50 30 30 30">
         <div class="container-fluid">
-            <header>
+
+            <!-- Modal -->
+            <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Preferences</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                <form action="http://localhost:8080/webprj/TimeSavvy" method="post">
+                     &nbsp;<input type="text" name="name"><br>
+                    E-mail: <input type="text" name="email"><br>
+                    <br/>
+                    <input type="submit" value="send request to servlet">
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<header>
 
                 <!-- 4. add navbar (code from getbootstrap.com >> components >> navbar) -->
 
@@ -75,7 +102,7 @@
                          -->
                          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="login_view.html">Log In</a></li>
+                                <li><a href="login_view.php">Log In</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Social<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
@@ -84,7 +111,14 @@
                                         <li><a href="#">Consulting</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Preferences</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#myModal">Preferences</a></li>
+
+                                
+                                
+                               
+
+                            </div>
+                        </div>
                             </ul>
                         </div>
                     </div>
@@ -213,7 +247,7 @@
                             /* finish the rest of the days in the week */
                             if($days_in_this_week < 8 && $days_in_this_week !=1):
                                 for($x = 1; $x <= (8 - $days_in_this_week); $x++):
-                                    $calendar.= ' ';
+                                    $calendar.= '<td class="calendar-day-np"> </td>';
                                 endfor;
                             endif;
                             
