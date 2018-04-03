@@ -14,6 +14,9 @@
 
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        
+        <script src = "bootstrap/js/bootstrap.js"></script>
         
 
 
@@ -24,33 +27,42 @@
     <body style="margin:50 30 30 30">
         <div class="container-fluid">
 
+            <!-- referenced w3 site to learn how to use bootstrap's modal feature -->
             <!-- Modal -->
-            <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Preferences</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
+                  <h3 class="modal-title" id="exampleModalLongTitle">Preferences</h3>
               </div>
+              <form action="http://localhost:8080/webprj/TimeSavvy" method="get">
               <div class="modal-body">
-                <form action="http://localhost:8080/webprj/TimeSavvy" method="post">
-                     &nbsp;<input type="text" name="name"><br>
-                    E-mail: <input type="text" name="email"><br>
+                   
+                    Select what type of motivational messages you would like to receive:
+                    <br>
+                    
+                    <input type="radio" name="motivationType" value="gentle"> Gentle <br>
+                    <input type="radio" name="motivationType" value="neutral" checked> Neutral <br>
+                    <input type="radio" name="motivationType" value="aggressive"> Aggressive
                     <br/>
-                    <input type="submit" value="send request to servlet">
-                </form>
+                    <br/>
+                    <input type="checkbox" name="notifications" value="none"> None <br/>
+ 
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="send btn btn-primary">Save changes</button>
+
             </div>
-        </div>
+       </form>
     </div>
 </div>
 </div>
+
 <header>
 
                 <!-- 4. add navbar (code from getbootstrap.com >> components >> navbar) -->
@@ -92,7 +104,8 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="index.php">Time Savvy</a>
+                                <a class="navbar-brand" href="index.php">Time Savvy <?php if (isset($_POST['motType'])) { echo $_POST['motType']; } ?> </a>
+                                
                             </div>
                             
                             <!-- 7. nav-collapse makes it possible to expand and collapse the menu
@@ -111,7 +124,7 @@
                                         <li><a href="#">Consulting</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#" data-toggle="modal" data-target="#myModal">Preferences</a></li>
+                                <li><a href="#myModal" data-toggle="modal" data-target="#myModal" class="pref">Preferences</a></li>
 
                                 
                                 

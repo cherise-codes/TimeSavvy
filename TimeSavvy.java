@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class TimeSavvy
@@ -31,14 +32,26 @@ public class TimeSavvy extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter(); 
+		HttpSession session = request.getSession(true);
 		
-		out.println("<br/><br/><html>" +
-                    "   <body>" +
-                    "      Data from PHP: " + request.getParameter("name") + ", " + request.getParameter("email") +                    
-                    "   </body>" +
-                    "</html>" ); 
-	
+		String motType = "neutral";
+		session.setAttribute(motType, request.getParameter("motivationType"));
+		
+		
+		out.println(
+				"<html><body>"+
+				
+				
+				"<form action='http://192.168.64.3/TimeSavvy/index.php' method='post'>"+
+				"<input type='hidden' name='motType' value='" + session.getAttribute(motType) + "' />"+
+				"<input type='submit' name='return' value='return to TimeSavvy' />"+
+				"</form>"+
+				"</body></html>"
+				
+				
+				);
 	}
+		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -49,3 +62,4 @@ public class TimeSavvy extends HttpServlet {
 	}
 
 }
+
