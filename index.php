@@ -14,7 +14,10 @@
 
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://unpkg.com/popper.js"></script>
+
+        
+        <script src = "bootstrap/js/bootstrap.js"></script>
+        
 
 
         <title> Time Savvy </title>
@@ -23,7 +26,44 @@
 
     <body style="margin:50 30 30 30">
         <div class="container-fluid">
-            <header>
+
+            <!-- referenced w3 site to learn how to use bootstrap's modal feature -->
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h3 class="modal-title" id="exampleModalLongTitle">Preferences</h3>
+              </div>
+              <form action="http://localhost:8080/webprj/TimeSavvy" method="get">
+              <div class="modal-body">
+                   
+                    Select what type of motivational messages you would like to receive:
+                    <br>
+                    
+                    <input type="radio" name="motivationType" value="gentle"> Gentle <br>
+                    <input type="radio" name="motivationType" value="neutral" checked> Neutral <br>
+                    <input type="radio" name="motivationType" value="aggressive"> Aggressive
+                    <br/>
+                    <br/>
+                    <input type="checkbox" name="notifications" value="none"> None <br/>
+ 
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="send btn btn-primary">Save changes</button>
+
+            </div>
+       </form>
+    </div>
+</div>
+</div>
+
+<header>
 
                 <!-- 4. add navbar (code from getbootstrap.com >> components >> navbar) -->
 
@@ -64,7 +104,8 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="index.php">Time Savvy</a>
+                                <a class="navbar-brand" href="index.php">Time Savvy <?php if (isset($_POST['motType'])) { echo $_POST['motType']; } ?> </a>
+                                
                             </div>
                             
                             <!-- 7. nav-collapse makes it possible to expand and collapse the menu
@@ -83,7 +124,14 @@
                                         <li><a href="#">Consulting</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Preferences</a></li>
+                                <li><a href="#myModal" data-toggle="modal" data-target="#myModal" class="pref">Preferences</a></li>
+
+                                
+                                
+                               
+
+                            </div>
+                        </div>
                             </ul>
                         </div>
                     </div>
@@ -212,7 +260,7 @@
                             /* finish the rest of the days in the week */
                             if($days_in_this_week < 8 && $days_in_this_week !=1):
                                 for($x = 1; $x <= (8 - $days_in_this_week); $x++):
-                                    $calendar.= ' ';
+                                    $calendar.= '<td class="calendar-day-np"> </td>';
                                 endfor;
                             endif;
                             
