@@ -14,6 +14,19 @@ if (!mysqli_query($con,$sql))
   {
     die('Error: ' . mysqli_error($con));
   }
-echo "1 record added"; // Output to user
+
+  $sql2="CREATE TABLE $_POST[username] (due VARCHAR(50) NOT NULL, task VARCHAR(300) NOT NULL)";
+if (!mysqli_query($con,$sql2))
+  {
+    die('Error: ' . mysqli_error($con));
+  }
+redirect('http://localhost:8080/TimeSavvy/index.php');
 mysqli_close($con);
+
+function redirect($url) {
+    ob_start();
+    header('Location: '.$url);
+    ob_end_flush();
+    die();
+}
 ?>
