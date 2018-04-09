@@ -25,9 +25,13 @@
                 <button class="tablinks" onclick="openWindow(event, 'LogIn')" >Log In</button>
                 <button class="tablinks" onclick="openWindow(event, 'NewAccount')">Sign Up</button>
             </div>
+
+
+
+<!-- ******************* LOG IN *************************** -->
    
             <div id="LogIn" class="tabcontent">   <!--login form-->
-                <form class="form-horizontal"  method="get"  action="http://localhost:8080/timeSavvy/LogIn">
+                <form class="form-horizontal"  method="post"  action="LogInUser.php">
                 <span class="heading">Time Savvy</span>
                 <div class="form-group">
                     <input type="text" class="form-control" id="LogInEmail"  name="username"
@@ -54,20 +58,24 @@
                 <p><a href="#0">Forgot your password?</a></p> 
               </div>
             </div> 
-        
+
+
+
+<!-- ****************** CREATE NEW ACCOUNT ****************** -->
+
             <div id="NewAccount" class="tabcontent">  <!--NewAccount form-->
-                <form class="form-horizontal"  method="get" action="http://localhost:8080/timeSavvy/LogIn" >
+                <form class="form-horizontal"  method="post" action="CreateUser.php" >
                 <span class="heading">Join Time Savvy Now!</span>
                 <div class="form-group">
                     <input type="text" class="form-control" id="UserName" name="username" placeholder="Set your Username" autofocus required autocomplete required/>
                     <i class="fa fa-user"></i>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" id="NewAccountEmail" name="password" placeholder="Please input your email address" autofocus required autocomplete required/>
+                    <input type="email" class="form-control" id="NewAccountEmail" name="email" placeholder="Please input your email address" autofocus required autocomplete required/>
                  <i class="fa fa-envelope"></i>
                 </div> 
                 <div class="form-group">
-                    <input type="password" class="form-control" id="userPassword1" placeholder="Set a password"/>
+                    <input type="password" class="form-control" id="userPassword1" name="password" placeholder="Set a password"/>
                     <i class="fa fa-lock"></i>
                     <img class="icon-img" id="ShowHide_img1" onclick="ShowHidePsw1()"    src="hide.png"> 
                 </div>
