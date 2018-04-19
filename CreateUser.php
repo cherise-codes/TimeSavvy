@@ -20,7 +20,7 @@ if (!mysqli_query($con,$sql2))
   {
     die('Error: ' . mysqli_error($con));
   }
-redirect('http://localhost:8080/TimeSavvy/index.php');
+redirect('http://192.168.64.3/TimeSavvy/index.php');
 mysqli_close($con);
 
 function redirect($url) {

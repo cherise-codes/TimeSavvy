@@ -13,10 +13,10 @@ $result = mysqli_query($con,$sql);
 
 $row = mysqli_fetch_array($result);
 if (empty($row)) {
-	echo "incorrect login";
+	redirect('http://localhost:8080/webprj/TimeSavvy.jsp');
 }
 else {
-	redirect('http://localhost:8080/TimeSavvy/index.php');
+	redirect('http://192.168.64.3/TimeSavvy/index.php');
 }
 
 mysqli_close($con);
