@@ -9,7 +9,7 @@
 <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">        
 </head>
-<body>
+<body onload="openWindow(event, 'LogIn')">
    
 <div class="MainPage">
     <div class="MainPage-Container">
@@ -31,7 +31,7 @@
 <!-- ******************* LOG IN *************************** -->
    
             <div id="LogIn" class="tabcontent">   <!--login form-->
-                <form class="form-horizontal"  method="post"  action="LogInUser.php">
+                <form class="form-horizontal"  method="post"  action="http://192.168.64.3/TimeSavvy/LogInUser.php">
                 <span class="heading">Time Savvy</span>
                 <div class="form-group">
                     <input type="text" class="form-control" id="LogInEmail"  name="username"
@@ -64,7 +64,7 @@
 <!-- ****************** CREATE NEW ACCOUNT ****************** -->
 
             <div id="NewAccount" class="tabcontent">  <!--NewAccount form-->
-                <form class="form-horizontal"  method="post" action="CreateUser.php" >
+                <form class="form-horizontal"  method="post" action="http://192.168.64.3/TimeSavvy/CreateUser.php" >
                 <span class="heading">Join Time Savvy Now!</span>
                 <div class="form-group">
                     <input type="text" class="form-control" id="UserName" name="username" placeholder="Set your Username" autofocus required autocomplete required/>
