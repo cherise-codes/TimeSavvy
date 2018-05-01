@@ -1,0 +1,71 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Dec 04, 2017 at 02:01 AM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.0.24
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `threadswap`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clothing`
+--
+
+CREATE TABLE `motivation` (
+  `type` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  'custom' bool NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `clothing`
+--
+
+INSERT INTO `clothing` (`clothingID`, `pageHitsTotal`, `pageHitsPerDay`, `imageLink`, `name`, `price`, `stock`, `description`, `rating`) VALUES
+("gentle", "Never underestimate how far you can go!", false),
+("gentle", "One more step!", false),
+("gentle", "It does not matter how slowly you go as long as you do not stop!", false),
+("gentle", "Take it easy, you still got time!", false),
+("gentle", "Step by step and you're gonna make it!", false),
+
+("neutral", "You can do it!", false),
+("neutral", "Keep calm and stay focused!", false),
+("neutral", "Don't miss the dues!", false),
+("neutral", "Don't give up!", false),
+("neutral", "A year from now we'll know who was really competing", false),
+
+("aggressive", "Don't stay stuck. Do btter!", false),
+("aggressive", "Can you stop wasting time??", false),
+("aggressive", "No excuse, you gotta run", false),
+("aggressive", "Just make the most insane beat anyone has ever heard!", false),
+("aggressive", "YI can't listen to any more of your excuses.", false),
+
+()
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `clothing`
+--
+ALTER TABLE `motivation`
+  ADD PRIMARY KEY (`description`);
+
