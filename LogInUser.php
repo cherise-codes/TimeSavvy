@@ -1,5 +1,8 @@
+
+
 <?php
 require_once('./library.php');
+session_start();
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 // Check connection
 if (mysqli_connect_errno()) {
@@ -13,10 +16,12 @@ $result = mysqli_query($con,$sql);
 
 $row = mysqli_fetch_array($result);
 if (empty($row)) {
-	redirect('http://localhost:8080/webprj/TimeSavvy.jsp');
+  redirect('http://localhost:8080/webprj/TimeSavvy.jsp');
 }
 else {
-	redirect('http://192.168.64.3/TimeSavvy/index.php');
+  $_SESSION["user"] = $_POST[username];
+  $_SESSION["loggedIn"] = true;
+  redirect('http://192.168.64.3/TimeSavvy/index.php');
 }
 
 mysqli_close($con);

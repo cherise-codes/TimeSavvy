@@ -12,19 +12,28 @@
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+        <!-- angular js library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         
         <script src = "bootstrap/js/bootstrap.js"></script>
+        <script src = ""> </script>
         
 
 
         <title> Time Savvy </title>
 
+        <?php
+header("Access-Control-Allow-Origin: *");
+?>
+
     </head>
 
-    <body style="margin:50 30 30 30">
+    <body style="margin:50 30 30 30" ng-app="myApp">
+        <?php session_start(); ?>
         <div class="container-fluid">
 
             <!-- referenced w3 site to learn how to use bootstrap's modal feature -->
@@ -104,7 +113,7 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="index.php">Time Savvy <?php if (isset($_POST['motType'])) { echo $_POST['motType']; } ?> </a>
+                                <a class="navbar-brand" href="http://192.168.64.3/TimeSavvy/index.php">Time Savvy <?php if (isset($_POST['motType'])) { echo $_POST['motType']; } ?> </a>
                                 
                             </div>
                             
@@ -114,35 +123,67 @@
                              commonly, lists with links are used for navigation
                          -->
                          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="login_view.html">Log In</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Social<span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Design</a></li>
-                                        <li><a href="#">Development</a></li>
-                                        <li><a href="#">Consulting</a></li>
-                                    </ul>
+                                <?php
+                                if(isset($_SESSION["user"])) { ?>
+                                
+                                    <li style="display: inline-block;" ng-init="user='<?php echo $_SESSION["user"] ?>'">
+                                        <a href="#">Hello, {{user}}</a>
+                                    </li>
+
+                                    <li style="display: inline-block;" ng-controller="bye">
+                                        <a href="#" ng-click="logOut()"> Log Out </a>
+                                    </li>
+
+                                
+                                <?php
+                                }
+                                else { ?>
+                                    <li style="display: inline-block;">
+                                        <a href="login_view.html">Log In</a> 
+                                    </li>
+                                <?php
+                                } ?>
+
+                                <div ng-controller="myCtrl">
+                                <li style="display: inline-block;">
+                                    <a href="#" ng-click="getMot()"> Get Motivation</a>
                                 </li>
-                                <li><a href="#myModal" data-toggle="modal" data-target="#myModal" class="pref">Preferences</a></li>
+                                </div>
 
-                                
-                                
-                               
+                                <li style="display: inline-block;">
+                                    <a href="#myModal" data-toggle="modal" data-target="#myModal" class="pref">Preferences</a>
+                                </li>
 
-                            </div>
-                        </div>
+                                <script>
+                                    var app = angular.module('myApp', []);
+                                    app.controller('myCtrl', function($scope) {
+                                        $scope.getMot = function() {
+                                            $scope.motivation = alert("You can do it, " + <?php echo $_SESSION["user"] ?> + " !");
+                                        };
+                                    });
+
+                                    app.controller('bye', function($scope){
+                                        $scope.logOut = function() {
+                                            <?php session_destroy(); ?>
+                                        };
+
+                                    });
+                                </script>
+
+ 
                             </ul>
                         </div>
                     </div>
                 </nav>
             </header>
             <div class="row">
-
-
+                
                 <!--<a href="#" id="popover" data-toggle="popover" title="Popover Header" data-content="Tasks">Toggle popover</a> -->
                 
                 <div class="col-sm-8">
+                    
 
                     <?php
                     require 'vendor/autoload.php';
@@ -301,14 +342,14 @@
                             <br/>
                             <div id="addTask" class="collapse">
 
-                                <form method="get" action="<?php echo $_SERVER['PHP_SELF'];?>">
+                                <form method="get" action="addTask.php">
                                     <div class="form-group">
                                         <label for="task">Task:</label>
-                                        <input style="background:rgba(255,255,255,0.5)" type="text" class="form-control" id="task" placeholder="What do you need to do?">
+                                        <input style="background:rgba(255,255,255,0.5)" type="text" class="form-control" id="task" name="task" placeholder="What do you need to do?">
                                     </div>
                                     <div class="form-group">
                                         <label for="due">Due Date:</label>
-                                        <input style="background:rgba(255,255,255,0.5)" type="text" class="form-control" id="due" placeholder="When should it be done?">
+                                        <input style="background:rgba(255,255,255,0.5)" type="text" class="form-control" id="due" name="due" placeholder="When should it be done?">
                                     </div>
 
                                     <input type="submit" class="btn btn-submit" onclick="addTask()" style="background:light gray; color:white;"/>
@@ -427,6 +468,11 @@
 
 
 
+
+                          var app = angular.module('myApp', []);
+                          app.controller('myCtrl', function($scope) {
+                            $scope.firstName = "John";
+                            $scope.lastName = "Doe";
 
 
 
